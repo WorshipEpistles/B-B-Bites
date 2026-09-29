@@ -3,19 +3,19 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>B&amp;B Bites - Authentic Ugandan Fast Food in Entebbe</title>
-    <meta name="description" content="B&amp;B Bites serves authentic Ugandan fast food in Entebbe - kikomando, pumpkin chapattis, beef stew &amp; pilau and fresh natural juices. Order on WhatsApp: +256 777 213513.">
-    <link rel="canonical" href="https://bbbites.ug/">
+    <title>B&amp;B Bites - Authentic Ugandan Fast Food, Catering &amp; Events</title>
+    <meta name="description" content="B&amp;B Bites is opening soon in Entebbe: authentic Ugandan fast food, fresh natural juices, plus catering, events management and culinary training. Enquire on WhatsApp: +256 777 213513.">
+    <link rel="canonical" href="https://bandbbites.com/">
 
     <meta property="og:type" content="restaurant.restaurant">
     <meta property="og:site_name" content="B&amp;B Bites">
-    <meta property="og:title" content="B&amp;B Bites - Authentic Ugandan Fast Food">
-    <meta property="og:description" content="It's Bigger, It's Better! Signature Ugandan dishes and fresh natural juices in Entebbe. Order on WhatsApp.">
-    <meta property="og:url" content="https://bbbites.ug/">
+    <meta property="og:title" content="B&amp;B Bites - Opening Soon in Entebbe">
+    <meta property="og:description" content="It's Bigger, It's Better! Signature Ugandan dishes and fresh natural juices, plus catering, events and training. Enquire on WhatsApp.">
+    <meta property="og:url" content="https://bandbbites.com/">
     <meta property="og:image" content="https://huggingface.co/spaces/Barton9/b-b-bites/resolve/main/images/WhatsApp-Image-2023-04-18-at-09.26.00-1.png">
     <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="B&amp;B Bites - Authentic Ugandan Fast Food">
-    <meta name="twitter:description" content="It's Bigger, It's Better! Signature Ugandan dishes and fresh natural juices in Entebbe.">
+    <meta name="twitter:title" content="B&amp;B Bites - Opening Soon in Entebbe">
+    <meta name="twitter:description" content="It's Bigger, It's Better! Signature Ugandan dishes and fresh natural juices, plus catering, events and training.">
     <meta name="twitter:image" content="https://huggingface.co/spaces/Barton9/b-b-bites/resolve/main/images/WhatsApp-Image-2023-04-18-at-09.26.00-1.png">
     <meta name="theme-color" content="#ca8a04">
 
@@ -60,11 +60,16 @@
       "slogan": "It's Bigger, It's Better!",
       "description": "Authentic Ugandan fast food with signature dishes and fresh natural juices.",
       "image": "https://huggingface.co/spaces/Barton9/b-b-bites/resolve/main/images/WhatsApp-Image-2023-04-18-at-09.26.00-1.png",
-      "url": "https://bbbites.ug/",
+      "url": "https://bandbbites.com/",
       "telephone": "+256777213513",
       "servesCuisine": "Ugandan",
       "priceRange": "UGX 2,000 - UGX 25,000",
       "currenciesAccepted": "UGX",
+      "paymentAccepted": "Cash, Mobile Money",
+      "areaServed": {
+        "@type": "City",
+        "name": "Entebbe"
+      },
       "address": {
         "@type": "PostalAddress",
         "addressLocality": "Entebbe",
@@ -73,10 +78,15 @@
       "openingHoursSpecification": [{
         "@type": "OpeningHoursSpecification",
         "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
-        "opens": "08:00",
-        "closes": "22:00"
+        "opens": "06:00",
+        "closes": "23:59"
       }],
-      "hasMenu": "https://bbbites.ug/#menu"
+      "makesOffer": [
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Catering" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Events management" } },
+        { "@type": "Offer", "itemOffered": { "@type": "Service", "name": "Culinary training" } }
+      ],
+      "hasMenu": "https://bandbbites.com/#menu"
     }
     </script>
 </head>
@@ -94,8 +104,9 @@
                 <a href="#home" class="hover:text-yellow-200 transition">Home</a>
                 <a href="#about" class="hover:text-yellow-200 transition">About</a>
                 <a href="#menu" class="hover:text-yellow-200 transition">Menu</a>
+                <a href="#services" class="hover:text-yellow-200 transition">Services</a>
                 <a href="#contact" class="hover:text-yellow-200 transition">Contact</a>
-                <a href="tel:+256777213513" class="bg-white text-yellow-700 font-bold py-2 px-4 rounded-full hover:bg-gray-100 transition">Call to order</a>
+                <a href="tel:+256777213513" class="bg-white text-yellow-700 font-bold py-2 px-4 rounded-full hover:bg-gray-100 transition">Call us</a>
             </div>
             <button id="menu-toggle" type="button" class="md:hidden focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded p-1" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-menu">
                 <i data-feather="menu" aria-hidden="true"></i>
@@ -106,6 +117,7 @@
                 <a href="#home" class="py-1 hover:text-yellow-200 transition">Home</a>
                 <a href="#about" class="py-1 hover:text-yellow-200 transition">About</a>
                 <a href="#menu" class="py-1 hover:text-yellow-200 transition">Menu</a>
+                <a href="#services" class="py-1 hover:text-yellow-200 transition">Services</a>
                 <a href="#contact" class="py-1 hover:text-yellow-200 transition">Contact</a>
                 <a href="tel:+256777213513" class="py-1 font-bold hover:text-yellow-200 transition">Call +256 777 213513</a>
             </div>
@@ -116,12 +128,13 @@
     <main id="home">
     <section class="hero-bg text-white py-32 px-4">
         <div class="container mx-auto text-center" data-aos="fade-up">
+            <p class="inline-block mb-6 bg-yellow-500 text-gray-900 font-bold text-sm uppercase tracking-wide px-4 py-1 rounded-full">Opening soon in Entebbe</p>
             <h1 class="text-4xl md:text-6xl font-bold mb-6">Authentic Ugandan Fast Food</h1>
             <p class="text-2xl font-bold mb-2 text-yellow-400">"It's Bigger, It's Better!"</p>
             <p class="text-xl mb-8 max-w-2xl mx-auto">Experience the rich flavors of Uganda with our signature dishes crafted by Chef Barton Niel Jones</p>
             <div class="flex flex-col sm:flex-row justify-center gap-4">
                 <a href="#menu" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold py-3 px-6 rounded-full transition">View Menu</a>
-                <a href="https://wa.me/256777213513?text=Hello%20B%26B%20Bites%2C%20I%27d%20like%20to%20place%20an%20order." target="_blank" rel="noopener" class="bg-white hover:bg-gray-100 text-yellow-700 font-bold py-3 px-6 rounded-full transition">Order on WhatsApp</a>
+                <a href="https://wa.me/256777213513?text=Hello%20B%26B%20Bites%2C%20please%20let%20me%20know%20when%20you%20open." target="_blank" rel="noopener" class="bg-white hover:bg-gray-100 text-yellow-700 font-bold py-3 px-6 rounded-full transition">Enquire on WhatsApp</a>
             </div>
         </div>
     </section>
@@ -136,7 +149,7 @@
                 <div class="md:w-1/2 md:pl-12" data-aos="fade-left">
                     <h2 class="text-3xl font-bold text-gray-800 mb-6">Our Story</h2>
                     <p class="text-gray-600 mb-4">Founded by Ugandan continental chef Barton Niel Jones with almost a decade of experience in the hospitality industry, B&amp;B Bites brings you authentic flavors with a modern twist.</p>
-                    <p class="text-gray-600 mb-6">Our kitchen in Entebbe has become a local favorite, known for our signature dishes and refreshing natural juices.</p>
+                    <p class="text-gray-600 mb-6">Our first kitchen opens soon in Entebbe, serving signature dishes and refreshing natural juices &mdash; alongside catering, events management and culinary training.</p>
                     <div class="flex items-center space-x-4">
                         <div class="bg-yellow-100 p-4 rounded-lg">
                             <i data-feather="award" class="text-yellow-600" aria-hidden="true"></i>
@@ -156,24 +169,65 @@
         <div class="container mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
                 <h2 class="text-3xl font-bold text-gray-800 mb-4">Our Special Menu</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">Discover our signature dishes that have made us famous in Uganda</p>
+                <p class="text-gray-600 max-w-2xl mx-auto">Our launch menu of signature Ugandan dishes and fresh natural juices. More dishes are on the way.</p>
             </div>
 
             <div id="menu-grid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8"></div>
+
+            <p class="text-center text-gray-500 text-sm mt-10 max-w-2xl mx-auto">All prices are in Ugandan Shillings and include VAT. Delivery is charged separately. Pay by Mobile Money or cash on +256 777 213513.</p>
+        </div>
+    </section>
+
+    <!-- Services Section -->
+    <section id="services" class="py-20 bg-white">
+        <div class="container mx-auto px-4">
+            <div class="text-center mb-16" data-aos="fade-up">
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Beyond the Counter</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Chef Barton and the B&amp;B Bites team also work off-site. Tell us what you need and we'll quote you.</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <article class="bg-gray-50 p-8 rounded-lg shadow-md" data-aos="zoom-in">
+                    <div class="bg-yellow-100 w-14 h-14 flex items-center justify-center rounded-lg mb-5">
+                        <i data-feather="coffee" class="text-yellow-600" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">Catering</h3>
+                    <p class="text-gray-600 mb-6">Ugandan and continental menus for weddings, introductions, corporate functions and private parties, cooked to order at any scale.</p>
+                    <a href="https://wa.me/256777213513?text=Hello%20B%26B%20Bites%2C%20I%27d%20like%20a%20catering%20quote." target="_blank" rel="noopener" class="font-bold text-yellow-700 hover:text-yellow-800 transition">Request a quote &rarr;</a>
+                </article>
+
+                <article class="bg-gray-50 p-8 rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="100">
+                    <div class="bg-yellow-100 w-14 h-14 flex items-center justify-center rounded-lg mb-5">
+                        <i data-feather="calendar" class="text-yellow-600" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">Events Management</h3>
+                    <p class="text-gray-600 mb-6">Planning, suppliers, staffing and on-the-day coordination, so your event runs while you enjoy it.</p>
+                    <a href="https://wa.me/256777213513?text=Hello%20B%26B%20Bites%2C%20I%27d%20like%20help%20managing%20an%20event." target="_blank" rel="noopener" class="font-bold text-yellow-700 hover:text-yellow-800 transition">Plan with us &rarr;</a>
+                </article>
+
+                <article class="bg-gray-50 p-8 rounded-lg shadow-md" data-aos="zoom-in" data-aos-delay="200">
+                    <div class="bg-yellow-100 w-14 h-14 flex items-center justify-center rounded-lg mb-5">
+                        <i data-feather="book-open" class="text-yellow-600" aria-hidden="true"></i>
+                    </div>
+                    <h3 class="font-bold text-xl mb-2 text-gray-800">Training</h3>
+                    <p class="text-gray-600 mb-6">Practical kitchen training from a chef with nearly a decade in hospitality &mdash; for individuals, kitchen teams and startups.</p>
+                    <a href="https://wa.me/256777213513?text=Hello%20B%26B%20Bites%2C%20I%27d%20like%20to%20know%20about%20training." target="_blank" rel="noopener" class="font-bold text-yellow-700 hover:text-yellow-800 transition">Ask about training &rarr;</a>
+                </article>
+            </div>
         </div>
     </section>
 
     <!-- Contact Section -->
-    <section id="contact" class="py-20 bg-white">
+    <section id="contact" class="py-20 bg-gray-50">
         <div class="container mx-auto px-4">
             <div class="text-center mb-16" data-aos="fade-up">
-                <h2 class="text-3xl font-bold text-gray-800 mb-4">Visit Us</h2>
-                <p class="text-gray-600 max-w-2xl mx-auto">We'd love to serve you our delicious food and refreshing drinks</p>
+                <h2 class="text-3xl font-bold text-gray-800 mb-4">Get in Touch</h2>
+                <p class="text-gray-600 max-w-2xl mx-auto">Message us to pre-order, book catering or be told the moment we open</p>
             </div>
 
             <div class="flex flex-col md:flex-row gap-12">
                 <div class="md:w-1/2" data-aos="fade-right">
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                    <div class="bg-white p-8 rounded-lg shadow-md">
                         <h3 class="text-xl font-bold text-gray-800 mb-6">Contact Information</h3>
 
                         <div class="flex items-start mb-6">
@@ -183,6 +237,7 @@
                             <div>
                                 <h4 class="font-bold text-gray-800">Location</h4>
                                 <p class="text-gray-600">Entebbe, Uganda</p>
+                                <p class="text-gray-500 text-sm">Exact address announced at opening</p>
                             </div>
                         </div>
 
@@ -202,27 +257,31 @@
                                 <i data-feather="clock" class="text-yellow-600" aria-hidden="true"></i>
                             </div>
                             <div>
-                                <h4 class="font-bold text-gray-800">Opening Hours</h4>
-                                <p class="text-gray-600">Monday - Sunday: 8:00 AM - 10:00 PM</p>
+                                <h4 class="font-bold text-gray-800">Hours</h4>
+                                <p class="text-gray-600">Restaurant, daily: 6:00 AM - Midnight</p>
+                                <p class="text-gray-600">Delivery, daily: 8:00 AM - 10:00 PM</p>
                             </div>
                         </div>
 
-                        <div class="flex space-x-4 mt-8">
-                            <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="B&amp;B Bites on Facebook" class="bg-blue-600 text-white p-3 rounded-full hover:bg-blue-700 transition">
-                                <i data-feather="facebook" aria-hidden="true"></i>
-                            </a>
-                            <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="B&amp;B Bites on Instagram" class="bg-pink-600 text-white p-3 rounded-full hover:bg-pink-700 transition">
-                                <i data-feather="instagram" aria-hidden="true"></i>
-                            </a>
-                            <a href="https://wa.me/256777213513" target="_blank" rel="noopener" aria-label="B&amp;B Bites on WhatsApp" class="bg-green-600 text-white p-3 rounded-full hover:bg-green-700 transition">
-                                <i data-feather="message-circle" aria-hidden="true"></i>
-                            </a>
+                        <div class="flex items-start mb-6">
+                            <div class="bg-yellow-100 p-3 rounded-full mr-4">
+                                <i data-feather="credit-card" class="text-yellow-600" aria-hidden="true"></i>
+                            </div>
+                            <div>
+                                <h4 class="font-bold text-gray-800">Payment</h4>
+                                <p class="text-gray-600">Mobile Money or cash, on +256 777 213513</p>
+                            </div>
                         </div>
+
+                        <a href="https://wa.me/256777213513" target="_blank" rel="noopener" class="inline-flex items-center gap-2 bg-green-600 hover:bg-green-700 text-white font-bold py-3 px-5 rounded-full transition mt-2">
+                            <i data-feather="message-circle" aria-hidden="true"></i>
+                            Chat on WhatsApp
+                        </a>
                     </div>
                 </div>
 
                 <div class="md:w-1/2" data-aos="fade-left">
-                    <div class="bg-gray-50 p-8 rounded-lg shadow-md">
+                    <div class="bg-white p-8 rounded-lg shadow-md">
                         <h3 class="text-xl font-bold text-gray-800 mb-6">Send Us a Message</h3>
                         <form id="contact-form" novalidate>
                             <div class="mb-4">
@@ -254,10 +313,6 @@
         </div>
     </section>
 
-    <!-- Map Section -->
-    <div class="h-96 w-full bg-gray-200">
-        <iframe title="Map showing B&amp;B Bites in Entebbe, Uganda" src="https://www.google.com/maps?q=Entebbe%2C%20Uganda&amp;output=embed" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
-    </div>
     </main>
 
     <!-- Footer -->
@@ -269,7 +324,7 @@
                         <img src="https://huggingface.co/spaces/Barton9/b-b-bites/resolve/main/images/divine%20change%20-%20Made%20with%20PosterMyWall%20(3)_20250708_103439_0000.png" alt="B&amp;B Bites logo" width="48" height="48" loading="lazy" class="h-12 w-12 rounded-full object-cover">
                         <span class="text-xl font-bold">B&amp;B Bites</span>
                     </div>
-                    <p class="text-gray-300 max-w-xs">Authentic Ugandan fast food with signature dishes and natural juices in Entebbe.</p>
+                    <p class="text-gray-300 max-w-xs">Authentic Ugandan fast food, catering, events management and training. Opening soon in Entebbe.</p>
                 </div>
 
                 <div class="grid grid-cols-2 md:grid-cols-3 gap-8">
@@ -279,6 +334,7 @@
                             <li><a href="#home" class="text-gray-300 hover:text-white transition">Home</a></li>
                             <li><a href="#about" class="text-gray-300 hover:text-white transition">About</a></li>
                             <li><a href="#menu" class="text-gray-300 hover:text-white transition">Menu</a></li>
+                            <li><a href="#services" class="text-gray-300 hover:text-white transition">Services</a></li>
                             <li><a href="#contact" class="text-gray-300 hover:text-white transition">Contact</a></li>
                         </ul>
                     </div>
@@ -293,7 +349,8 @@
                         <ul class="space-y-2">
                             <li class="text-gray-300">Entebbe, Uganda</li>
                             <li><a href="tel:+256777213513" class="text-gray-300 hover:text-white transition">+256 777 213513</a></li>
-                            <li class="text-gray-300">Open daily: 8:00 AM - 10:00 PM</li>
+                            <li class="text-gray-300">Restaurant: 6:00 AM - Midnight</li>
+                            <li class="text-gray-300">Delivery: 8:00 AM - 10:00 PM</li>
                         </ul>
                     </div>
                 </div>
@@ -302,8 +359,7 @@
             <div class="border-t border-gray-700 mt-12 pt-8 flex flex-col md:flex-row justify-between items-center">
                 <p class="text-gray-300 mb-4 md:mb-0">&copy; <span id="copyright-year">2026</span> B&amp;B Bites. All rights reserved.</p>
                 <div class="flex space-x-6">
-                    <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="B&amp;B Bites on Facebook" class="text-gray-300 hover:text-white transition"><i data-feather="facebook" aria-hidden="true"></i></a>
-                    <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="B&amp;B Bites on Instagram" class="text-gray-300 hover:text-white transition"><i data-feather="instagram" aria-hidden="true"></i></a>
+                    <a href="tel:+256777213513" aria-label="Call B&amp;B Bites" class="text-gray-300 hover:text-white transition"><i data-feather="phone" aria-hidden="true"></i></a>
                     <a href="https://wa.me/256777213513" target="_blank" rel="noopener" aria-label="B&amp;B Bites on WhatsApp" class="text-gray-300 hover:text-white transition"><i data-feather="message-circle" aria-hidden="true"></i></a>
                 </div>
             </div>
@@ -315,11 +371,11 @@
         <div class="container mx-auto px-4 py-3 flex items-center justify-between gap-4">
             <div>
                 <p class="font-bold"><span id="order-count">0</span> item(s)</p>
-                <p class="text-sm text-gray-300">Total: UGX <span id="order-total">0</span></p>
+                <p class="text-sm text-gray-300">Total: UGX <span id="order-total">0</span> <span class="text-gray-400">(incl. VAT, delivery extra)</span></p>
             </div>
             <div class="flex items-center gap-2">
                 <button id="order-clear" type="button" class="px-4 py-2 rounded-full border border-gray-600 hover:bg-gray-800 transition text-sm">Clear</button>
-                <button id="order-send" type="button" class="bg-green-600 hover:bg-green-700 font-bold px-5 py-2 rounded-full transition">Order on WhatsApp</button>
+                <button id="order-send" type="button" class="bg-green-600 hover:bg-green-700 font-bold px-5 py-2 rounded-full transition">Send on WhatsApp</button>
             </div>
         </div>
     </div>
@@ -394,7 +450,7 @@
                 total += quantity * item.price;
                 lines.push(`- ${quantity} x ${item.name} (UGX ${formatUGX(item.price * quantity)})`);
             });
-            lines.push(`Total: UGX ${formatUGX(total)}`);
+            lines.push(`Total: UGX ${formatUGX(total)} (incl. VAT, excluding delivery)`);
             return lines.join('\n');
         }
 
