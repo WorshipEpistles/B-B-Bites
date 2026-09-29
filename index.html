@@ -19,8 +19,16 @@
     <meta name="twitter:image" content="https://huggingface.co/spaces/Barton9/b-b-bites/resolve/main/images/WhatsApp-Image-2023-04-18-at-09.26.00-1.png">
     <meta name="theme-color" content="#ca8a04">
 
-    <link rel="icon" type="image/x-icon" href="/static/favicon.ico">
-    <link rel="apple-touch-icon" href="https://huggingface.co/spaces/Barton9/b-b-bites/resolve/main/images/divine%20change%20-%20Made%20with%20PosterMyWall%20(3)_20250708_103439_0000.png">
+    <link rel="icon" type="image/x-icon" href="/icons/favicon.ico">
+    <link rel="icon" type="image/png" sizes="192x192" href="/icons/icon-192.png">
+    <link rel="apple-touch-icon" href="/icons/apple-touch-icon.png">
+
+    <link rel="manifest" href="/manifest.webmanifest">
+    <meta name="application-name" content="B&amp;B Bites">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+    <meta name="apple-mobile-web-app-title" content="B&amp;B Bites">
+    <meta name="mobile-web-app-capable" content="yes">
 
     <link rel="preconnect" href="https://huggingface.co">
     <script src="https://cdn.tailwindcss.com/3.4.16"></script>
@@ -97,7 +105,7 @@
     <nav class="bg-yellow-600 text-white shadow-lg sticky top-0 z-50">
         <div class="container mx-auto px-4 py-3 flex justify-between items-center">
             <a href="#home" class="flex items-center space-x-2">
-                <img src="https://huggingface.co/spaces/Barton9/b-b-bites/resolve/main/images/divine%20change%20-%20Made%20with%20PosterMyWall%20(3)_20250708_103439_0000.png" alt="B&amp;B Bites logo" width="64" height="64" class="h-16 w-16 rounded-full object-cover">
+                <img src="/icons/icon-192.png" alt="B&amp;B Bites logo" width="64" height="64" class="h-16 w-16 rounded-full object-cover">
                 <span class="text-xl font-bold">B&amp;B Bites</span>
             </a>
             <div class="hidden md:flex items-center space-x-8">
@@ -321,7 +329,7 @@
             <div class="flex flex-col md:flex-row justify-between">
                 <div class="mb-8 md:mb-0">
                     <div class="flex items-center space-x-2 mb-4">
-                        <img src="https://huggingface.co/spaces/Barton9/b-b-bites/resolve/main/images/divine%20change%20-%20Made%20with%20PosterMyWall%20(3)_20250708_103439_0000.png" alt="B&amp;B Bites logo" width="48" height="48" loading="lazy" class="h-12 w-12 rounded-full object-cover">
+                        <img src="/icons/icon-192.png" alt="B&amp;B Bites logo" width="48" height="48" loading="lazy" class="h-12 w-12 rounded-full object-cover">
                         <span class="text-xl font-bold">B&amp;B Bites</span>
                     </div>
                     <p class="text-gray-300 max-w-xs">Authentic Ugandan fast food, catering, events management and training. Opening soon in Entebbe.</p>
@@ -365,6 +373,26 @@
             </div>
         </div>
     </footer>
+
+    <!-- Install prompt -->
+    <div id="install-banner" class="hidden fixed bottom-24 inset-x-4 md:left-auto md:right-4 md:w-96 z-50 bg-white border border-gray-200 rounded-lg shadow-2xl p-4">
+        <div class="flex items-start gap-3">
+            <img src="/icons/icon-192.png" alt="" width="48" height="48" class="h-12 w-12 rounded-lg">
+            <div class="flex-1">
+                <p class="font-bold text-gray-900">Install B&amp;B Bites</p>
+                <p id="install-text" class="text-sm text-gray-600">Add our app to your home screen for faster ordering, even offline.</p>
+                <div class="mt-3 flex gap-2">
+                    <button id="install-accept" type="button" class="bg-yellow-600 hover:bg-yellow-700 text-white font-bold px-4 py-2 rounded-full text-sm transition">Install</button>
+                    <button id="install-dismiss" type="button" class="px-4 py-2 rounded-full border border-gray-300 hover:bg-gray-100 text-sm transition">Not now</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Offline notice -->
+    <div id="offline-banner" class="hidden fixed top-0 inset-x-0 z-50 bg-gray-900 text-white text-sm text-center py-2" role="status">
+        You are offline &mdash; browsing the saved menu. Orders send once you are back online.
+    </div>
 
     <!-- Order bar -->
     <div id="order-bar" class="hidden fixed bottom-0 inset-x-0 z-50 bg-gray-900 text-white shadow-2xl">
@@ -505,6 +533,12 @@
                 openWhatsApp(orderMessage());
             });
 
+            const offlineBanner = document.getElementById('offline-banner');
+            const showOffline = () => offlineBanner.classList.toggle('hidden', navigator.onLine);
+            window.addEventListener('online', showOffline);
+            window.addEventListener('offline', showOffline);
+            showOffline();
+
             const form = document.getElementById('contact-form');
             const status = document.getElementById('contact-status');
             form.addEventListener('submit', (event) => {
@@ -528,6 +562,62 @@
                 form.reset();
             });
         });
+
+        // Progressive web app: installable, and the menu stays readable offline.
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').catch(() => {});
+            });
+        }
+
+        (() => {
+            const banner = document.getElementById('install-banner');
+            const accept = document.getElementById('install-accept');
+            const dismiss = document.getElementById('install-dismiss');
+            const text = document.getElementById('install-text');
+            const DISMISSED_KEY = 'bb-install-dismissed';
+            const standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+            let deferredPrompt = null;
+
+            const hide = () => banner.classList.add('hidden');
+            const suppressed = () => standalone || localStorage.getItem(DISMISSED_KEY) === '1';
+
+            dismiss.addEventListener('click', () => {
+                localStorage.setItem(DISMISSED_KEY, '1');
+                hide();
+            });
+
+            window.addEventListener('beforeinstallprompt', (event) => {
+                event.preventDefault();
+                deferredPrompt = event;
+                if (!suppressed()) {
+                    banner.classList.remove('hidden');
+                }
+            });
+
+            accept.addEventListener('click', async () => {
+                if (!deferredPrompt) {
+                    return;
+                }
+                hide();
+                deferredPrompt.prompt();
+                await deferredPrompt.userChoice;
+                deferredPrompt = null;
+            });
+
+            window.addEventListener('appinstalled', () => {
+                localStorage.setItem(DISMISSED_KEY, '1');
+                hide();
+            });
+
+            // iOS Safari never fires beforeinstallprompt, so tell the user where the button is.
+            const iOS = /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+            if (iOS && !suppressed()) {
+                text.textContent = 'Tap the Share button, then "Add to Home Screen", for faster ordering.';
+                accept.classList.add('hidden');
+                banner.classList.remove('hidden');
+            }
+        })();
     </script>
 </body>
 </html>
